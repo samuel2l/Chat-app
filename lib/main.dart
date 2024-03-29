@@ -1,5 +1,5 @@
 import 'package:chatapp/chats.dart';
-import 'package:chatapp/sign_up.dart';
+import 'package:chatapp/signup.dart';
 import 'package:flutter/material.dart';
 
 void main() {

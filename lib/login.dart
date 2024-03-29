@@ -1,16 +1,14 @@
-import 'dart:js_interop';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class SignUp extends StatefulWidget {
-  const SignUp({super.key});
+class LogIn extends StatefulWidget {
+  const LogIn({super.key});
 
   @override
-  State<SignUp> createState() => _SignUpState();
+  State<LogIn> createState() => _LogInState();
 }
 
-class _SignUpState extends State<SignUp> {
+class _LogInState extends State<LogIn> {
   late String email;
   late String password;
   final _auth = FirebaseAuth.instance;
@@ -40,9 +38,10 @@ class _SignUpState extends State<SignUp> {
               TextButton(
                   onPressed: () async {
                     try {
-                      final newUser =
-                          await _auth.createUserWithEmailAndPassword(
-                              email: email, password: password);
+                      // ignore: unused_local_variable
+                      final newUser = await _auth.signInWithEmailAndPassword(
+                          email: email, password: password);
+
                       Navigator.pushNamed(context, '/chat');
                     } catch (e) {
                       print(e);
