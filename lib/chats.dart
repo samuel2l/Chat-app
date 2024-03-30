@@ -78,6 +78,24 @@ class _ChatScreenState extends State<ChatScreen> {
               icon: Icon(Icons.logout_outlined))),
       body: Column(
         children: [
+          StreamBuilder(
+              stream: _firestore.collection('messages').snapshots(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  final msgs = snapshot.data?.docs;
+                  List<Widget> msgWidgets = [];
+                  for (var msg in msgs!) {
+                    final msgText = msg.data()['text'];
+                    final msgSender = msg.data()['sender'];
+                    msgWidgets.add(Text('$msgText from $msgSender'));
+                  }
+                  return Column(
+                    children: msgWidgets,
+                  );
+                } else {
+                  return Text('no previous msgs here');
+                }
+              }),
           TextField(
             onChanged: (value) {
               msg = value;
