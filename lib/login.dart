@@ -9,8 +9,8 @@ class LogIn extends StatefulWidget {
 }
 
 class _LogInState extends State<LogIn> {
-  late String email;
-  late String password;
+  String email = '';
+  String password = '';
   final _auth = FirebaseAuth.instance;
 
   @override
@@ -38,16 +38,18 @@ class _LogInState extends State<LogIn> {
               TextButton(
                   onPressed: () async {
                     try {
+                      print(password);
                       // ignore: unused_local_variable
                       final newUser = await _auth.signInWithEmailAndPassword(
                           email: email, password: password);
 
                       Navigator.pushNamed(context, '/chat');
                     } catch (e) {
+                      print('error loggung in');
                       print(e);
                     }
                   },
-                  child: const Text('sign up'))
+                  child: const Text('log in'))
             ],
           ),
         ),

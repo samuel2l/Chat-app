@@ -10,6 +10,7 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   final _auth = FirebaseAuth.instance;
+  String? email = '';
   @override
   void initState() {
     // TODO: implement initState
@@ -22,6 +23,7 @@ class _ChatScreenState extends State<ChatScreen> {
       final currentUser = _auth.currentUser;
       if (currentUser != null) {
         print(currentUser.email);
+        email = currentUser.email;
       }
     } catch (e) {
       print(e);
@@ -34,7 +36,7 @@ class _ChatScreenState extends State<ChatScreen> {
       appBar: AppBar(
         title: Text('chat app'),
       ),
-      body: const Text('Hey there {currentUser.email}'),
+      body: Text('Hey there ${_auth.currentUser?.email}'),
     );
   }
 }

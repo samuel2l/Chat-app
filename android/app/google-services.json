@@ -12,10 +12,12 @@
           "package_name": "com.example.chatapp"
         }
       },
+
       "oauth_client": [],
       "api_key": [
         {
           "current_key": "AIzaSyCbRZMBly5GIBdzhsPTgSJTxwSoa2SRjX4"
+
         }
       ],
       "services": {
